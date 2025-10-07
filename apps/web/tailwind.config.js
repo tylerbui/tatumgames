@@ -51,28 +51,21 @@ module.exports = {
                     foreground: 'hsl(var(--card-foreground))',
                 },
             },
+            backgroundImage: {
+                'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                'gradient-conic':
+                    'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                'gradient-light':
+                    'linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%)',
+                'gradient-dark':
+                    'linear-gradient(135deg, #1f2937 0%, #111827 100%)',
+            },
             borderRadius: {
                 lg: 'var(--radius)',
                 md: 'calc(var(--radius) - 2px)',
                 sm: 'calc(var(--radius) - 4px)',
             },
-            keyframes: {
-                'accordion-down': {
-                    from: { height: '0' },
-                    to: { height: 'var(--radix-accordion-content-height)' },
-                },
-                'accordion-up': {
-                    from: { height: 'var(--radix-accordion-content-height)' },
-                    to: { height: '0' },
-                },
-                pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            },
-            animation: {
-                'accordion-down': 'accordion-down 0.2s ease-out',
-                'accordion-up': 'accordion-up 0.2s ease-out',
-                pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            },
         },
     },
-    plugins: [require('tailwindcss-animate'), require('tw-animate-css')],
+    plugins: [],
 };

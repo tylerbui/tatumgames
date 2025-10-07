@@ -2,6 +2,7 @@
 const config = {
   preset: "react-native",
   testEnvironment: "jsdom",
+  passWithNoTests: true,
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
   },

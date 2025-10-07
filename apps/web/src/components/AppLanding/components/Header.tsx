@@ -1,36 +1,10 @@
 import { useState, useEffect } from 'react';
-import {
-    Menu,
-    X,
-    Zap,
-    Search,
-    Globe,
-    ChevronDown,
-    User,
-    LogIn,
-    UserPlus,
-    Bell,
-    Settings,
-    HelpCircle,
-    Moon,
-    Sun,
-} from 'lucide-react';
+import { Menu, X, Zap, Search, Globe, ChevronDown } from 'lucide-react';
 import { Button } from '../../ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '../../ui/avatar';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from '../../ui/dialog';
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
     const [isScrolled, setIsScrolled] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -40,34 +14,23 @@ export const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const languages = [
-        { code: 'en', name: 'English', flag: '🇺🇸' },
-        { code: 'es', name: 'Español', flag: '🇪🇸' },
-        { code: 'fr', name: 'Français', flag: '🇫🇷' },
-        { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-        { code: 'zh', name: '中文', flag: '🇨🇳' },
-        { code: 'ja', name: '日本語', flag: '🇯🇵' },
-    ];
-
-    const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
-
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
                 isScrolled
-                    ? 'bg-black/40 backdrop-blur-xl border-b border-white/20 shadow-2xl'
+                    ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50'
                     : 'bg-transparent'
             }`}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center py-4">
+            <div className="container mx-auto px-4">
+                <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <div className="flex items-center">
                         <div className="flex items-center group cursor-pointer">
                             <div className="p-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 group-hover:scale-110 transition-transform duration-300">
                                 <Zap className="h-6 w-6 text-white" />
                             </div>
-                            <span className="ml-3 text-2xl font-black text-white group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                            <span className="ml-3 text-2xl font-bold text-gray-900 dark:text-white group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                                 Tatum
                             </span>
                         </div>
@@ -75,253 +38,121 @@ export const Header = () => {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center space-x-8">
-                        <a
-                            href="#features"
-                            className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
-                        >
-                            Features
-                        </a>
-                        <a
-                            href="#pricing"
-                            className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
-                        >
-                            Pricing
-                        </a>
-                        <a
-                            href="#docs"
-                            className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
-                        >
-                            Docs
-                        </a>
-                        <a
-                            href="#about"
-                            className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
-                        >
-                            About
-                        </a>
+                        <div className="flex items-center space-x-2">
+                            <span className="text-gray-600 dark:text-gray-300 font-medium">
+                                Getting started
+                            </span>
+                            <ChevronDown className="h-4 w-4 text-gray-400" />
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <span className="text-gray-600 dark:text-gray-300 font-medium">
+                                Trending
+                            </span>
+                            <ChevronDown className="h-4 w-4 text-gray-400" />
+                        </div>
                     </nav>
 
                     {/* Search Bar - Center */}
                     <div className="hidden lg:flex flex-1 max-w-md mx-8">
                         <div className="relative w-full">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <Search className="h-5 w-5 text-gray-300" />
+                                <Search className="h-5 w-5 text-gray-400" />
                             </div>
                             <input
                                 type="text"
-                                placeholder="Search features, docs, help..."
-                                value={searchQuery}
-                                onChange={e => setSearchQuery(e.target.value)}
-                                className="block w-full pl-10 pr-3 py-3 border border-white/20 rounded-xl leading-5 bg-white/10 backdrop-blur-md placeholder-gray-400 text-white focus:outline-none focus:placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 sm:text-sm transition-all duration-300"
+                                placeholder="Search..."
+                                className="block w-full pl-10 pr-3 py-3 border border-gray-200 dark:border-gray-600 rounded-xl leading-5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md placeholder-gray-500 dark:placeholder-gray-400 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-all duration-300"
                             />
                         </div>
                     </div>
 
-                    {/* Right Side - Actions */}
+                    {/* Right side buttons */}
                     <div className="flex items-center space-x-4">
-                        {/* Theme Toggle */}
+                        {/* Globe */}
                         <Button
                             variant="ghost"
-                            size="sm"
-                            onClick={() => setIsDarkMode(!isDarkMode)}
-                            className="text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300"
+                            size="icon"
+                            className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                         >
-                            {isDarkMode ? (
-                                <Sun className="h-4 w-4" />
-                            ) : (
-                                <Moon className="h-4 w-4" />
-                            )}
+                            <Globe className="h-5 w-5" />
                         </Button>
 
-                        {/* Notifications */}
+                        {/* Language dropdown */}
+                        <div className="hidden md:flex items-center space-x-2">
+                            <span className="text-sm text-gray-600 dark:text-gray-300">
+                                US
+                            </span>
+                            <ChevronDown className="h-4 w-4 text-gray-400" />
+                        </div>
+
+                        {/* Sign In */}
                         <Button
                             variant="ghost"
-                            size="sm"
-                            className="text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300 relative"
+                            className="hidden sm:inline-flex text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
                         >
-                            <Bell className="h-4 w-4" />
-                            <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full animate-pulse"></span>
+                            Sign In
                         </Button>
 
-                        {/* Language Selector */}
-                        <Dialog>
-                            <DialogTrigger asChild>
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    className="text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300"
-                                >
-                                    <Globe className="h-4 w-4 mr-2" />
-                                    <span className="hidden sm:inline">
-                                        {selectedLanguage.flag}
-                                    </span>
-                                    <ChevronDown className="h-3 w-3 ml-1" />
-                                </Button>
-                            </DialogTrigger>
-                            <DialogContent className="bg-slate-900/95 backdrop-blur-md border-white/20">
-                                <DialogHeader>
-                                    <DialogTitle className="text-white">
-                                        Select Language
-                                    </DialogTitle>
-                                    <DialogDescription className="text-gray-300">
-                                        Choose your preferred language
-                                    </DialogDescription>
-                                </DialogHeader>
-                                <div className="space-y-2">
-                                    {languages.map(lang => (
-                                        <Button
-                                            key={lang.code}
-                                            variant={
-                                                selectedLanguage.code ===
-                                                lang.code
-                                                    ? 'default'
-                                                    : 'ghost'
-                                            }
-                                            className="w-full justify-start"
-                                            onClick={() =>
-                                                setSelectedLanguage(lang)
-                                            }
-                                        >
-                                            <span className="mr-3">
-                                                {lang.flag}
-                                            </span>
-                                            <span>{lang.name}</span>
-                                        </Button>
-                                    ))}
-                                </div>
-                            </DialogContent>
-                        </Dialog>
-
-                        {/* User Menu */}
-                        <Dialog>
-                            <DialogTrigger asChild>
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    className="text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300"
-                                >
-                                    <Avatar className="h-8 w-8">
-                                        <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" />
-                                        <AvatarFallback>U</AvatarFallback>
-                                    </Avatar>
-                                </Button>
-                            </DialogTrigger>
-                            <DialogContent className="bg-slate-900/95 backdrop-blur-md border-white/20">
-                                <DialogHeader>
-                                    <DialogTitle className="text-white">
-                                        Account
-                                    </DialogTitle>
-                                    <DialogDescription className="text-gray-300">
-                                        Manage your account settings
-                                    </DialogDescription>
-                                </DialogHeader>
-                                <div className="space-y-2">
-                                    <Button
-                                        variant="ghost"
-                                        className="w-full justify-start text-white hover:bg-white/10"
-                                    >
-                                        <User className="h-4 w-4 mr-3" />
-                                        Profile
-                                    </Button>
-                                    <Button
-                                        variant="ghost"
-                                        className="w-full justify-start text-white hover:bg-white/10"
-                                    >
-                                        <Settings className="h-4 w-4 mr-3" />
-                                        Settings
-                                    </Button>
-                                    <Button
-                                        variant="ghost"
-                                        className="w-full justify-start text-white hover:bg-white/10"
-                                    >
-                                        <HelpCircle className="h-4 w-4 mr-3" />
-                                        Help & Support
-                                    </Button>
-                                    <div className="border-t border-white/20 my-2"></div>
-                                    <Button
-                                        variant="ghost"
-                                        className="w-full justify-start text-white hover:bg-white/10"
-                                    >
-                                        <LogIn className="h-4 w-4 mr-3" />
-                                        Sign In
-                                    </Button>
-                                    <Button className="w-full">
-                                        <UserPlus className="h-4 w-4 mr-3" />
-                                        Sign Up
-                                    </Button>
-                                </div>
-                            </DialogContent>
-                        </Dialog>
+                        {/* Sign Up */}
+                        <Button className="bg-blue-600 hover:bg-blue-700 text-white hidden sm:inline-flex">
+                            Sign Up
+                        </Button>
 
                         {/* Mobile menu button */}
-                        <div className="lg:hidden">
-                            <Button
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300"
-                            >
-                                {isMenuOpen ? (
-                                    <X className="h-6 w-6" />
-                                ) : (
-                                    <Menu className="h-6 w-6" />
-                                )}
-                            </Button>
-                        </div>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="lg:hidden text-gray-600 dark:text-gray-300"
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        >
+                            {isMenuOpen ? (
+                                <X className="h-6 w-6" />
+                            ) : (
+                                <Menu className="h-6 w-6" />
+                            )}
+                        </Button>
                     </div>
                 </div>
 
                 {/* Mobile Navigation */}
                 {isMenuOpen && (
-                    <div className="lg:hidden border-t border-white/20 bg-black/40 backdrop-blur-xl">
-                        <div className="px-2 pt-4 pb-3 space-y-1">
-                            {/* Mobile Search */}
-                            <div className="px-3 py-2">
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <Search className="h-5 w-5 text-gray-400" />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        placeholder="Search..."
-                                        value={searchQuery}
-                                        onChange={e =>
-                                            setSearchQuery(e.target.value)
-                                        }
-                                        className="block w-full pl-10 pr-3 py-2 border border-white/20 rounded-lg leading-5 bg-white/10 backdrop-blur-md placeholder-gray-500 text-white focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                    />
+                    <div className="lg:hidden border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md">
+                        <nav className="py-4 space-y-4">
+                            <div className="px-4 py-2">
+                                <div className="flex items-center justify-between">
+                                    <span className="text-gray-600 dark:text-gray-300 font-medium">
+                                        Getting started
+                                    </span>
+                                    <ChevronDown className="h-4 w-4 text-gray-400" />
                                 </div>
                             </div>
-
-                            {/* Mobile Navigation Links */}
-                            {['Features', 'Pricing', 'Docs', 'About'].map(
-                                item => (
-                                    <a
-                                        key={item}
-                                        href={`#${item.toLowerCase()}`}
-                                        className="block px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 transition-colors rounded-lg"
-                                        onClick={() => setIsMenuOpen(false)}
-                                    >
-                                        {item}
-                                    </a>
-                                ),
-                            )}
-
-                            {/* Mobile Auth Buttons */}
-                            <div className="border-t border-white/20 pt-3 mt-3 space-y-2">
+                            <div className="px-4 py-2">
+                                <div className="flex items-center justify-between">
+                                    <span className="text-gray-600 dark:text-gray-300 font-medium">
+                                        Trending
+                                    </span>
+                                    <ChevronDown className="h-4 w-4 text-gray-400" />
+                                </div>
+                            </div>
+                            <div className="px-4 py-2">
+                                <input
+                                    type="text"
+                                    placeholder="Search..."
+                                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+                            <div className="px-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex space-x-4">
                                 <Button
                                     variant="ghost"
-                                    className="w-full justify-start text-white hover:bg-white/10"
+                                    className="flex-1 text-gray-700 dark:text-gray-300"
                                 >
-                                    <LogIn className="h-4 w-4 mr-3" />
                                     Sign In
                                 </Button>
-                                <Button className="w-full">
-                                    <UserPlus className="h-4 w-4 mr-3" />
+                                <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
                                     Sign Up
                                 </Button>
                             </div>
-                        </div>
+                        </nav>
                     </div>
                 )}
             </div>

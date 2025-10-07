@@ -80,14 +80,14 @@ export const Footer = () => {
     ];
 
     return (
-        <footer className="relative bg-gradient-to-t from-black/50 to-transparent backdrop-blur-xl border-t border-white/10">
+        <footer className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-t border-gray-200 dark:border-gray-700">
             {/* Newsletter Section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="text-center mb-16">
-                    <h3 className="text-3xl font-bold text-white mb-4">
+                    <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                         Stay Updated
                     </h3>
-                    <p className="text-gray-300 max-w-2xl mx-auto mb-8">
+                    <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
                         Get the latest updates, features, and insights delivered
                         to your inbox. Join 50,000+ developers who trust Tatum.
                     </p>
@@ -100,7 +100,7 @@ export const Footer = () => {
                             placeholder="Enter your email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
-                            className="flex-1 px-4 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
+                            className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             required
                         />
                         <Button
