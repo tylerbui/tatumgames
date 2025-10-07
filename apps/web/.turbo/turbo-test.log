@@ -3,13 +3,6 @@
 > @tatum/web@1.0.0 test /Users/tylerbui/tatum/apps/web
 > jest
 
-[33m [33m[1m⚠[22m[39m Warning: Next.js inferred your workspace root, but it may not be correct.
- We detected multiple lockfiles and selected the directory of /Users/tylerbui/package-lock.json as the root directory.
- To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
-   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
- Detected additional lockfiles: 
-   * /Users/tylerbui/tatum/pnpm-lock.yaml
-[39m
 [33mwatchman warning: Recrawled this watch 1 time, most recently because:
 MustScanSubDirs UserDroppedTo resolve, please review the information on
 https://facebook.github.io/watchman/docs/troubleshooting.html#recrawl
