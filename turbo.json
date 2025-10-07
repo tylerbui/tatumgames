@@ -1,0 +1,32 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "envMode": "loose",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "./dist/**"]
+    },
+    "build:types": {
+      "dependsOn": ["^build:types"],
+      "outputs": ["./dist/**"]
+    },
+    "build:vercel": {
+      "dependsOn": ["^build:vercel"],
+      "outputs": [".next/**", "!.next/cache/**", "./dist/**"]
+    },
+    "check-types": {
+      "dependsOn": ["^build:types", "^check-types"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "test": {
+      "dependsOn": ["^build:types", "^test"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  },
+  "globalDependencies": ["tsconfig.base.json"]
+}

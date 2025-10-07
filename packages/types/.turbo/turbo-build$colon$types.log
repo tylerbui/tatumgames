@@ -1,0 +1,4 @@
+
+> @tatum/types@1.0.0 build:types /Users/tylerbui/tatum/packages/types
+> tsc --emitDeclarationOnly
+

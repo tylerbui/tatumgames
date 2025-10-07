@@ -1,0 +1,11 @@
+// apps/mobile/tsconfig.json
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["react", "react-native"]
+  },
+  "include": ["**/*.ts", "**/*.tsx"], // 👈 match files anywhere
+  "exclude": ["node_modules", "android", "ios"]
+}

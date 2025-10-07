@@ -1,0 +1,24 @@
+
+> @tatum/web@1.0.0 build /Users/tylerbui/tatum/apps/web
+> next build
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/tylerbui/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/tylerbui/tatum/pnpm-lock.yaml
+
+   ▲ Next.js 15.5.4
+
+   Linting and checking validity of types ...
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 2.7s
+   Collecting page data ...
+unhandledRejection [Error: Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:
+  - react:      19.1.1
+  - react-dom:  19.2.0
+Learn more: https://react.dev/warnings/version-mismatch] {
+  type: 'Error'
+}
+ ELIFECYCLE  Command failed with exit code 1.
