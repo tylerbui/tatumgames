@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Zap, Search, Globe, ChevronDown } from 'lucide-react';
 import { Button } from '../../ui/button';
+import { HamburgerMenu } from './HamburgerMenu';
+import { AuthDemo } from './AuthDemo';
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false); // Demo state
 
     useEffect(() => {
         const handleScroll = () => {
@@ -13,6 +16,44 @@ export const Header = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Menu handler functions
+    const handleSignIn = () => {
+        setIsAuthenticated(true);
+        console.log('Sign In clicked');
+        // Add your sign in logic here
+    };
+
+    const handleSignUp = () => {
+        console.log('Sign Up clicked');
+        // Add your sign up logic here
+    };
+
+    const handleSignOut = () => {
+        setIsAuthenticated(false);
+        console.log('Sign Out clicked');
+        // Add your sign out logic here
+    };
+
+    const handleProfileClick = () => {
+        console.log('Profile clicked');
+        // Add your profile navigation logic here
+    };
+
+    const handleSettingsClick = () => {
+        console.log('Settings clicked');
+        // Add your settings navigation logic here
+    };
+
+    const handleAppearanceClick = () => {
+        console.log('Appearance clicked');
+        // Add your appearance settings logic here
+    };
+
+    const handleAccessibilityClick = () => {
+        console.log('Accessibility clicked');
+        // Add your accessibility settings logic here
+    };
 
     return (
         <header
@@ -89,73 +130,39 @@ export const Header = () => {
                         <Button
                             variant="ghost"
                             className="hidden sm:inline-flex text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                            onClick={handleSignIn}
                         >
                             Sign In
                         </Button>
 
                         {/* Sign Up */}
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white hidden sm:inline-flex">
+                        <Button
+                            className="bg-blue-600 hover:bg-blue-700 text-white hidden sm:inline-flex"
+                            onClick={handleSignUp}
+                        >
                             Sign Up
                         </Button>
 
-                        {/* Mobile menu button */}
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            className="lg:hidden text-gray-600 dark:text-gray-300"
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        >
-                            {isMenuOpen ? (
-                                <X className="h-6 w-6" />
-                            ) : (
-                                <Menu className="h-6 w-6" />
-                            )}
-                        </Button>
+                        {/* Hamburger Menu */}
+                        <HamburgerMenu
+                            isAuthenticated={isAuthenticated}
+                            onSignIn={handleSignIn}
+                            onSignUp={handleSignUp}
+                            onSignOut={handleSignOut}
+                            onProfileClick={handleProfileClick}
+                            onSettingsClick={handleSettingsClick}
+                            onAppearanceClick={handleAppearanceClick}
+                            onAccessibilityClick={handleAccessibilityClick}
+                        />
                     </div>
                 </div>
-
-                {/* Mobile Navigation */}
-                {isMenuOpen && (
-                    <div className="lg:hidden border-t border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md">
-                        <nav className="py-4 space-y-4">
-                            <div className="px-4 py-2">
-                                <div className="flex items-center justify-between">
-                                    <span className="text-gray-600 dark:text-gray-300 font-medium">
-                                        Getting started
-                                    </span>
-                                    <ChevronDown className="h-4 w-4 text-gray-400" />
-                                </div>
-                            </div>
-                            <div className="px-4 py-2">
-                                <div className="flex items-center justify-between">
-                                    <span className="text-gray-600 dark:text-gray-300 font-medium">
-                                        Trending
-                                    </span>
-                                    <ChevronDown className="h-4 w-4 text-gray-400" />
-                                </div>
-                            </div>
-                            <div className="px-4 py-2">
-                                <input
-                                    type="text"
-                                    placeholder="Search..."
-                                    className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                />
-                            </div>
-                            <div className="px-4 pt-4 border-t border-gray-200 dark:border-gray-700 flex space-x-4">
-                                <Button
-                                    variant="ghost"
-                                    className="flex-1 text-gray-700 dark:text-gray-300"
-                                >
-                                    Sign In
-                                </Button>
-                                <Button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
-                                    Sign Up
-                                </Button>
-                            </div>
-                        </nav>
-                    </div>
-                )}
             </div>
+
+            {/* Demo Auth Toggle */}
+            <AuthDemo
+                isAuthenticated={isAuthenticated}
+                onToggleAuth={() => setIsAuthenticated(!isAuthenticated)}
+            />
         </header>
     );
 };
